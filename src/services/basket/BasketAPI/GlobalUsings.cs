@@ -9,3 +9,7 @@ global using Marten;
 global using BuildingBlocks.Exceptions;
 global using BasketAPI.Exceptions;
 global using BasketAPI.Data;
+global using BuildingBlocks.Exceptions.Handler;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using DiscountGrpc;

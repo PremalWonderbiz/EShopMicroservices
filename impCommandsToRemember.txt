@@ -1,0 +1,12 @@
+For discount microservice(In terminal)
+dotnet ef migrations add "Amount datatype change in coupon model" --project .\DiscountGrpc.csproj --startup-project .\DiscountGrpc.csproj
+dotnet ef database update --project .\DiscountGrpc.csproj --startup-project .\DiscountGrpc.csproj
+
+To generate ssl certificate for each service(for docker env as in local vs auto creates it)
+mkdir "%USERPROFILE%\.aspnet\https"
+dotnet dev-certs https --export-path "%USERPROFILE%\.aspnet\https\discountgrpc.pfx" --password devpassword
+dotnet dev-certs https --trust
+
+To locally run docker compose up instead of visual studio()
+docker compose -f docker-compose.yml -f docker-compose.override.yml up
+
