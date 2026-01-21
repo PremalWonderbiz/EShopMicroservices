@@ -10,3 +10,9 @@ dotnet dev-certs https --trust
 To locally run docker compose up instead of visual studio()
 docker compose -f docker-compose.yml -f docker-compose.override.yml up
 
+
+Ordering service Migration commands PM Console
+Add-Migration InitialCreate -OutputDir Data/Migrations -Project OrderingInfrastructure -StartupProject OrderingAPI
+Update-Database
+
+
