@@ -11,4 +11,8 @@
     <ProjectReference Include="..\OrderingDomain\OrderingDomain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2" />
+  </ItemGroup>
+
 </Project>
