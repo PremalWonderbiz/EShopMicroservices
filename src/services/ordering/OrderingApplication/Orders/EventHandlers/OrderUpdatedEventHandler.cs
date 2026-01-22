@@ -1,12 +1,12 @@
 ﻿namespace OrderingApplication.Orders.EventHandlers
 {
-    public class OrderUpdatedEventHandler(ILogger logger)
+    public class OrderUpdatedEventHandler(ILogger<OrderUpdatedEventHandler> logger)
         : INotificationHandler<OrderUpdatedEvent>
     {
         public Task Handle(OrderUpdatedEvent notification, CancellationToken cancellationToken)
         {
             logger.LogInformation("Domain Event handled: {DomainEvent}", notification.GetType().Name);
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }

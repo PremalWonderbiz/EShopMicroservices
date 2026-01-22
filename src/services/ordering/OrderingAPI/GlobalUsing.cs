@@ -2,3 +2,9 @@
 global using OrderingApplication;
 global using OrderingInfrastructure;
 global using OrderingInfrastructure.Data.Extentions;
+global using Carter;
+global using Mapster;
+global using MediatR;
+global using OrderingApplication.Dtos;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+global using HealthChecks.UI.Client;
