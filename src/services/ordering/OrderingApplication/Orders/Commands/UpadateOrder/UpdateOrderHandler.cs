@@ -6,7 +6,10 @@
         public async Task<UpdateOrderResult> Handle(UpdateOrderCommand command, CancellationToken cancellationToken)
         {
             var orderId = OrderId.Of(command.Order.Id);
-            var order = await dbContext.Orders.FindAsync([orderId], cancellationToken: cancellationToken);
+            var order = await dbContext.Orders
+                .Include(o => o.OrderItems)
+                .SingleOrDefaultAsync(o => o.Id == orderId);
+
             if(order is null)
                 throw new OrderNotFoundException(command.Order.Id);
 
@@ -49,6 +52,14 @@
                 billingAddress: updatedBillingAddress,
                 payment: updatedPayment,
                 status: orderDto.Status);
+
+            order.UpdateOrderItems(
+                    orderDto.OrderItems.Select(x =>
+                        new UpdateOrderItem(
+                            ProductId.Of(x.ProductId),
+                            x.Quantity,
+                            x.Price
+                        )));
         }
     }
 }

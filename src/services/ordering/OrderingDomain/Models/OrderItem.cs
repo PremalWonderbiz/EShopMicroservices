@@ -2,7 +2,7 @@
 {
     public class OrderItem : Entity<OrderItemId>
     {
-        internal OrderItem(OrderId orderId, ProductId productId, int quantity, decimal price)
+        public OrderItem(OrderId orderId, ProductId productId, int quantity, decimal price)
         {
             Id = OrderItemId.Of(Guid.NewGuid());
             OrderId = orderId;
@@ -15,6 +15,15 @@
         public ProductId ProductId { get; private set; } = default!;
         public int Quantity { get; private set; } = default!;
         public decimal Price { get; private set; } = default!;
+
+        public void Update(int quantity, decimal price)
+        {
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(quantity);
+            ArgumentOutOfRangeException.ThrowIfNegativeOrZero(price);
+
+            Quantity = quantity;
+            Price = price;
+        }
 
     }
 }

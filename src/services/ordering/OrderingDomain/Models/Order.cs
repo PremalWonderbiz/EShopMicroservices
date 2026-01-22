@@ -1,5 +1,12 @@
 ﻿namespace OrderingDomain.Models
 {
+    public record UpdateOrderItem(
+        ProductId ProductId,
+        int Quantity,
+        decimal Price
+    );
+
+
     public class Order : Aggregate<OrderId>
     {
         private readonly List<OrderItem> _orderItems = new();
@@ -34,14 +41,12 @@
 
         public void Update(OrderName orderName, Address shippingAddress, Address billingAddress, Payment payment, OrderStatus status)
         {
-            var order = new Order
-            {
-                OrderName = orderName,
-                ShippingAddress = shippingAddress,
-                BillingAddress = billingAddress,
-                Payment = payment,
-                Status = status
-            };
+            OrderName = orderName;
+            ShippingAddress = shippingAddress;
+            BillingAddress = billingAddress;
+            Payment = payment;
+            Status = status;
+                
             AddDomainEvent(new OrderUpdatedEvent(this));
         }
 
@@ -58,6 +63,36 @@
             var orderItem = _orderItems.FirstOrDefault(oi => oi.ProductId == productId);
             if (orderItem is not null) 
                 _orderItems.Remove(orderItem);
+        }
+        public void UpdateOrderItems(IEnumerable<UpdateOrderItem> items)
+        {
+            var itemsByProductId = items.ToDictionary(i => i.ProductId.Value);
+
+            _orderItems.RemoveAll(
+                item => !itemsByProductId.ContainsKey(item.ProductId.Value)
+            );
+
+            foreach (var item in items)
+            {
+                var existing = _orderItems
+                    .SingleOrDefault(i => i.ProductId == item.ProductId);
+
+                if (existing is not null)
+                {
+                    existing.Update(item.Quantity, item.Price);
+                }
+                else
+                {
+                    _orderItems.Add(
+                        new OrderItem(
+                            orderId: Id,
+                            productId: item.ProductId,
+                            quantity: item.Quantity,
+                            price: item.Price
+                        )
+                    );
+                }
+            }
         }
     }
 }
