@@ -37,6 +37,8 @@ services:
     restart: always
     ports:
       - "1433:1433"
+    volumes:
+      - sqlserver_orderdb:/var/opt/mssql
   
   messagebroker:
     container_name: messagebroker
@@ -142,6 +144,28 @@ services:
     ports:
       - "6003:8080"
       - "6063:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${USERPROFILE}/.aspnet/https:/https:ro
+
+  yarpapigateway:
+    container_name: yarpapigw
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/yarpapigw.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=devpassword
+    depends_on:
+      - catalogapi
+      - basketapi
+      - orderingapi
+    ports:
+      - "6004:8080"
+      - "6064:8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro

@@ -8,9 +8,21 @@
 
             var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-            context.Database.MigrateAsync().GetAwaiter().GetResult();
+            const int maxRetries = 10;
 
-            await SeedAsync(context);
+            for (int retry = 1; retry <= maxRetries; retry++)
+            {
+                try
+                {
+                    await context.Database.MigrateAsync();
+                    await SeedAsync(context);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    await Task.Delay(3000);
+                }
+            }
         }
 
         private static async Task SeedAsync(ApplicationDbContext context)
@@ -22,7 +34,7 @@
 
         private static async Task SeedCustomerAsync(ApplicationDbContext context)
         {
-            if(!await context.Customers.AnyAsync())
+            if (!await context.Customers.AnyAsync())
             {
                 await context.Customers.AddRangeAsync(InitialData.Customers);
                 await context.SaveChangesAsync();
