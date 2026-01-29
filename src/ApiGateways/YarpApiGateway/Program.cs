@@ -15,10 +15,22 @@ builder.Services.AddRateLimiter(ratelimitingoptions =>
     });
 });
 
+// Add CORS policy allowing any origin and any method (and any header) for now
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the Http request pipeline
 app.UseRateLimiter();
+app.UseCors("AllowAll");
 
 app.MapReverseProxy();
 

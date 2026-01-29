@@ -47,7 +47,7 @@ const Checkout: React.FC = () => {
       const checkoutData: BasketCheckout = {
         ...data,
         userName: cart.userName,
-        customerId: '00000000-0000-0000-0000-000000000000',
+        customerId: '58C49479-EC65-4DE2-86E7-033C546291AA',
         totalPrice: cart.totalPrice,
         paymentMethod: 1,
       };

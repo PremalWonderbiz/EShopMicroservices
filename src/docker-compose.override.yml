@@ -152,7 +152,7 @@ services:
       - ${USERPROFILE}/.aspnet/https:/https:ro
 
   yarpapigateway:
-    container_name: yarpapigw
+    container_name: yarpapigateway
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
@@ -172,3 +172,12 @@ services:
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       - ${USERPROFILE}/.aspnet/https:/https:ro
+
+  shoppingweb:
+    container_name: shoppingweb
+    environment:
+      - VITE_API_GATEWAY_URL=http://yarpapigateway:8080
+    ports:
+      - "5173:5173"
+    depends_on:
+      - yarpapigateway
