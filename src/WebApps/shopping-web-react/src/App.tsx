@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer';
+import ErrorBoundary from './components/common/ErrorBoundary';
+import Loading from './components/common/Loading';
+import { useCartStore } from './store/cartStore';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const loadCart = useCartStore((state) => state.loadCart);
+  const [initializing, setInitializing] = useState(true);
+
+  useEffect(() => {
+    const initialize = async () => {
+      try {
+        await loadCart();
+      } catch (error) {
+        console.error('Failed to load cart:', error);
+      } finally {
+        setInitializing(false);
+      }
+    };
+
+    initialize();
+  }, [loadCart]);
+
+  if (initializing) {
+    return <Loading fullScreen message="Initializing application..." />;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ErrorBoundary>
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
+        <main className="flex-grow-1">
+          <Outlet />
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </ErrorBoundary>
+  );
+};
 
-export default App
+export default App;
