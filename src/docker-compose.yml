@@ -50,10 +50,14 @@ services:
       context: ./WebApps/shopping-web-react
       dockerfile: Dockerfile
 
+  nginx:
+    image: nginx:alpine
+
 volumes:
   postgres_catalog:
   postgres_basket:
   sqlserver_orderdb:
+  ngnix:
 
 
 

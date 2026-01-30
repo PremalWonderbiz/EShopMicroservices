@@ -6,6 +6,10 @@
     <Project Path="BuildingBlocks/BuildingBlocks/BuildingBlocks.csproj" Id="112a7f28-2867-4205-9e20-d1bc528322fd" />
     <Project Path="BuildingBlocks/BuildingBlocksMessaging/BuildingBlocksMessaging.csproj" Id="816b2875-33d6-4710-93d2-b8df099c3f2f" />
   </Folder>
+  <Folder Name="/nginx/">
+    <File Path="nginx/nginx.conf" />
+  </Folder>
+  <Folder Name="/nginx/certs/" />
   <Folder Name="/services/" />
   <Folder Name="/services/basket/">
     <Project Path="services/basket/BasketAPI/BasketAPI.csproj" Id="9d71f9cf-0fd5-452e-b0a2-05876ee9807c" />
