@@ -24,4 +24,11 @@ export const catalogService = {
     );
     return response.data;
   },
+
+  getProductById: async (id: string): Promise<GetProductByIdResponse> => {
+    const response = await apiClient.get<GetProductByIdResponse>(
+      `/catalog-service/products/${id}`
+    );
+    return response.data;
+  },
 };

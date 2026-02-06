@@ -13,7 +13,7 @@ export const useProducts = (pageNumber: number = 1, pageSize: number = 10) => {
       setError(null);
       try {
         const response = await catalogService.getProducts({ pageNumber, pageSize });
-        setProducts(response.products);
+        setProducts(response.products.data);
       } catch (err: any) {
         setError(err.message);
       } finally {

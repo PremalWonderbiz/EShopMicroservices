@@ -58,6 +58,10 @@ export interface GetOrdersByNameResponse {
   orders: Order[];
 }
 
+export interface GetOrderByIdResponse {
+  order: Order;
+}
+
 export interface GetOrdersByCustomerResponse {
   orders: PaginatedResult<Order>;
 }

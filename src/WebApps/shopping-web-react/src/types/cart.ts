@@ -4,6 +4,7 @@ export interface ShoppingCartItem {
   price: number;
   productId: string;
   productName: string;
+  originalPrice: number;
 }
 
 export interface ShoppingCart {

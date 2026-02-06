@@ -2,15 +2,16 @@ import { createBrowserRouter } from 'react-router-dom';
 import { lazy } from 'react';
 import App from './App';
 import ErrorPage from './pages/Error';
+import { Home } from './pages/Home/Home';
+import { Cart } from './pages/Cart/Cart';
+import { Confirmation } from './pages/Confirmation/Confirmation';
+import { Checkout } from './pages/Checkout/Checkout';
+import { OrderDetail } from './pages/OrderDetail/OrderDetail';
+import { ProductDetail } from './pages/ProductDetail/ProductDetail';
+import { OrderList } from './pages/OrderList/OrderList';
+import { Products } from './pages/Products/Products';
 
 // Lazy load pages for better performance
-const Home = lazy(() => import('./pages/Home'));
-const ProductList = lazy(() => import('./pages/ProductList'));
-const ProductDetail = lazy(() => import('./pages/ProductDetail'));
-const Cart = lazy(() => import('./pages/Cart'));
-const Checkout = lazy(() => import('./pages/Checkout'));
-const Confirmation = lazy(() => import('./pages/Confirmation'));
-const OrderList = lazy(() => import('./pages/OrderList'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <ProductList />,
+        element: <Products />,
       },
       {
         path: 'products/:productId',
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
         path: 'privacy',
         element: <Privacy />,
       },
+      {
+        path: 'orders/:orderId',
+        element: <OrderDetail />
+      }
     ],
   },
 ]);

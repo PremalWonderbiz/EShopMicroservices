@@ -103,8 +103,10 @@ export const useCartStore = create<CartStore>()(
         if (!cart) return;
 
         try {
-          await basketService.deleteBasket(cart.userName);
-          set({ cart: { userName: cart.userName, items: [], totalPrice: 0 } });
+          // await basketService.deleteBasket(cart.userName);  //this is currently handled in backend api only 
+          const clearedCart: ShoppingCart = { userName: cart.userName, items: [], totalPrice: 0 };
+          set({ cart: clearedCart });
+          await get().syncCart();
         } catch (error: any) {
           set({ error: error.message });
         }

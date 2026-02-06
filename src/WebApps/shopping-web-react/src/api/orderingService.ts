@@ -1,4 +1,4 @@
-import type { GetOrdersByCustomerResponse, GetOrdersByNameResponse, GetOrdersResponse } from '../types/order';
+import type { GetOrderByIdResponse, GetOrdersByCustomerResponse, GetOrdersByNameResponse, GetOrdersResponse } from '../types/order';
 import apiClient from './client';
 
 export const orderingService = {
@@ -13,6 +13,13 @@ export const orderingService = {
   getOrdersByName: async (orderName: string): Promise<GetOrdersByNameResponse> => {
     const response = await apiClient.get<GetOrdersByNameResponse>(
       `/ordering-service/orders/${orderName}`
+    );
+    return response.data;
+  },
+
+  getOrderById: async (orderId?: string): Promise<GetOrderByIdResponse> => {
+    const response = await apiClient.get<GetOrderByIdResponse>(
+      `/ordering-service/order/${orderId || 'testplaceholder'}`
     );
     return response.data;
   },

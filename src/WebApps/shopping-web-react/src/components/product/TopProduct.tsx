@@ -8,7 +8,7 @@ interface TopProductProps {
 
 const TopProduct: React.FC<TopProductProps> = ({ product }) => {
   return (
-    <div className="col-12 col-md-3">
+    <div className="col-12">
       <div className="card">
         <div className="card-header bg-success text-white text-uppercase">
           <i className="fa fa-heart"></i> Top product
@@ -16,7 +16,8 @@ const TopProduct: React.FC<TopProductProps> = ({ product }) => {
         <Link to={`/products/${product.id}`}>
           <img
             className="img-fluid border-0"
-            src={`/images/product/${product.imageFile}`}
+            // src={`/images/product/${product.imageFile}`}
+            src={`default.jpg`}
             alt={product.name}
           />
         </Link>

@@ -1,3 +1,5 @@
+import type { PaginatedResult } from "./order";
+
 export interface Product {
   id: string;
   name: string;
@@ -8,7 +10,7 @@ export interface Product {
 }
 
 export interface GetProductsResponse {
-  products: Product[];
+  products: PaginatedResult<Product>;
 }
 
 export interface GetProductByIdResponse {

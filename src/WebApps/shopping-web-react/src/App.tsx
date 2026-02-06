@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from './components/common/Header';
-import Footer from './components/common/Footer';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import Loading from './components/common/Loading';
 import { useCartStore } from './store/cartStore';
-
+import { Header } from './components/common/Header/Header';
+import { Footer } from './components/common/Footer/Footer';
 const App: React.FC = () => {
   const loadCart = useCartStore((state) => state.loadCart);
   const [initializing, setInitializing] = useState(true);
@@ -33,6 +32,7 @@ const App: React.FC = () => {
       <div className="d-flex flex-column min-vh-100">
         <Header />
         <main className="flex-grow-1">
+          <ScrollRestoration />
           <Outlet />
         </main>
         <Footer />

@@ -1,0 +1,194 @@
+/* Input Container */
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.input-full-width {
+  width: 100%;
+}
+
+/* Input Label */
+.input-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
+.input-required {
+  color: var(--color-error-500);
+  margin-left: var(--space-1);
+}
+
+/* Input Wrapper */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Input Base */
+.input {
+  flex: 1;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+/* Input States */
+.input:hover:not(:disabled) {
+  border-color: var(--color-gray-400);
+}
+
+.input:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+.input:disabled {
+  background-color: var(--color-gray-50);
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Input with Icons */
+.input-with-left-icon {
+  padding-left: var(--space-10);
+}
+
+.input-with-right-icon {
+  padding-right: var(--space-10);
+}
+
+/* Input Icons */
+.input-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.input-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.input-icon-left {
+  left: var(--space-3);
+}
+
+.input-icon-right {
+  right: var(--space-3);
+}
+
+.input-wrapper:hover .input-icon {
+  color: var(--color-text-secondary);
+}
+
+.input:focus ~ .input-icon {
+  color: var(--color-primary-500);
+}
+
+/* Error State */
+.input-error .input {
+  border-color: var(--color-error-500);
+}
+
+.input-error .input:focus {
+  border-color: var(--color-error-500);
+  box-shadow: 0 0 0 3px var(--color-error-100);
+}
+
+.input-icon-error {
+  color: var(--color-error-500) !important;
+}
+
+/* Disabled State */
+.input-disabled .input-icon {
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+}
+
+/* Input Messages */
+.input-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.input-message-error {
+  color: var(--color-error-600);
+}
+
+.input-message-helper {
+  color: var(--color-text-secondary);
+}
+
+/* Textarea Variant (if needed) */
+textarea.input {
+  min-height: 100px;
+  resize: vertical;
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+
+/* Select Variant (if needed) */
+select.input {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  background-size: 1.25rem;
+  padding-right: var(--space-10);
+}
+
+select.input:disabled {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%9ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Input Group (for future use) */
+.input-group {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.input-group .input-container {
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .input {
+    font-size: var(--font-size-base);
+    padding: var(--space-3);
+  }
+
+  .input-with-left-icon {
+    padding-left: var(--space-10);
+  }
+
+  .input-with-right-icon {
+    padding-right: var(--space-10);
+  }
+}

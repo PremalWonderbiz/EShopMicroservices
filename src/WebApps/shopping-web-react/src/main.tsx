@@ -5,12 +5,15 @@ import { router } from './router';
 import Loading from './components/common/Loading';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './styles/global.css';
+import './index.css';
+import { ToastProvider } from './components/ui/Toast/Toast';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Suspense fallback={<Loading fullScreen message="Loading application..." />}>
-      <RouterProvider router={router} />
-    </Suspense>
+    <ToastProvider>
+      <Suspense fallback={<Loading fullScreen message="Loading application..." />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </ToastProvider>
   </React.StrictMode>
 );
