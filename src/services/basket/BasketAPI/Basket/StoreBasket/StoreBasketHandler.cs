@@ -1,8 +1,4 @@
-﻿
-using DiscountGrpc;
-using JasperFx.Events.Daemon;
-
-namespace BasketAPI.Baskt.StoreBasket
+﻿namespace BasketAPI.Baskt.StoreBasket
 {
     public record StoreBasketCommand(ShoppingCart Cart) : ICommand<StoreBasketResult>;
     public record StoreBasketResult(string UserName);
@@ -34,7 +30,7 @@ namespace BasketAPI.Baskt.StoreBasket
             {
                 var coupon = await discountProto.GetDiscountAsync(
                     new GetDiscountRequest { ProductName = item.ProductName }, cancellationToken: cancellationToken);
-                item.Price -= coupon.Amount;
+                item.Price = item.OriginalPrice - coupon.Amount;
             }
         }
     }

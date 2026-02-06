@@ -1,12 +1,11 @@
-﻿namespace BasketAPI.Models
+﻿namespace BuildingBlocksMessaging.Dtos
 {
-    public class ShoppingCartItem
+    public class ShoppingCartItemDto
     {
         public int Quantity { get; set; } = default!;
         public string Color { get; set; } = default!;
         public decimal Price { get; set; } = default!;
         public Guid ProductId { get; set; } = default!;
         public string ProductName { get; set; } = default!;
-        public decimal OriginalPrice { get; set; } = default!;
     }
 }

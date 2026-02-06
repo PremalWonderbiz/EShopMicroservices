@@ -1,4 +1,6 @@
-﻿namespace BuildingBlocksMessaging.Events
+﻿using BuildingBlocksMessaging.Dtos;
+
+namespace BuildingBlocksMessaging.Events
 {
     public record BasketCheckoutEvent : IntegrationEvent
     {
@@ -12,14 +14,16 @@
         public string EmailAddress { get; set; } = default!;
         public string AddressLine { get; set; } = default!;
         public string Country { get; set; } = default!;
-        public string State {  get; set; } = default!;
+        public string State { get; set; } = default!;
         public string ZipCode { get; set; } = default!;
 
         //payment
         public string CardName { get; set; } = default!;
         public string CardNumber { get; set; } = default!;
-        public string Expiration {  get; set; } = default!;
-        public string Cvv {  get; set; } = default!;
-        public int PaymentMethod {  get; set; } = default!;
+        public string Expiration { get; set; } = default!;
+        public string Cvv { get; set; } = default!;
+        public int PaymentMethod { get; set; } = default!;
+
+        public List<ShoppingCartItemDto> Items { get; set; } = new();
     }
 }

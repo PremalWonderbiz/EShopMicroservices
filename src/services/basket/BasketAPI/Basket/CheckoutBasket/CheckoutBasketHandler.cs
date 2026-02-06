@@ -1,4 +1,5 @@
 ﻿
+using BuildingBlocksMessaging.Dtos;
 using BuildingBlocksMessaging.Events;
 using MassTransit;
 
@@ -8,7 +9,7 @@ namespace BasketAPI.Basket.CheckoutBasket
         : ICommand<CheckoutBasketResult>;
     public record CheckoutBasketResult(bool IsSuccess);
 
-    public class CheckoutBasketCommandValidator 
+    public class CheckoutBasketCommandValidator
         : AbstractValidator<CheckoutBasketCommand>
     {
         public CheckoutBasketCommandValidator()
@@ -35,6 +36,7 @@ namespace BasketAPI.Basket.CheckoutBasket
 
             var eventMessage = command.BasketCheckoutDto.Adapt<BasketCheckoutEvent>();
             eventMessage.TotalPrice = basket.TotalPrice;
+            eventMessage.Items = basket.Items.Adapt<List<ShoppingCartItemDto>>();
 
             await publishEndpoint.Publish(eventMessage, cancellationToken);
 
