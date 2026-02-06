@@ -1,12 +1,14 @@
-﻿namespace CatalogAPI.Products.GetProducts
+﻿using BuildingBlocks.Pagination;
+
+namespace CatalogAPI.Products.GetProducts
 {
     public record GetProductsRequest(int? PageNumber = 1, int? PageSize = 10);
-    public record GetProductsResponse(IEnumerable<Product> Products);
+    public record GetProductsResponse(PaginatedResult<Product> Products);
     public class GetProductByIdEndpoint : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapGet("/products", async ([AsParameters] GetProductsRequest request,ISender sender) =>
+            app.MapGet("/products", async ([AsParameters] GetProductsRequest request, ISender sender) =>
             {
                 var query = request.Adapt<GetProductsQuery>();
                 var result = await sender.Send(query);
