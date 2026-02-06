@@ -201,6 +201,7 @@ export const ProductDetail: React.FC = () => {
                     }`}
                   onClick={() => setSelectedImage(index)}
                 >
+                  {image && null}
                   <img
                     // src={image} 
                     src="/default.jpg"
