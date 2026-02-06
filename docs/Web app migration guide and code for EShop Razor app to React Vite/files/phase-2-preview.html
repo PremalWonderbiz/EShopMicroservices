@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 2: Components Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+        }
+        
+        .preview-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .preview-header {
+            background: white;
+            padding: 3rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #2563eb, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            color: #6b7280;
+            font-size: 1.25rem;
+        }
+        
+        .component-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            color: white;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-desc {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .mockup {
+            background: #f9fafb;
+            border: 2px dashed #d1d5db;
+            border-radius: 0.75rem;
+            padding: 3rem;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        
+        .mockup-text {
+            color: #6b7280;
+            font-size: 1.125rem;
+        }
+        
+        .code-snippet {
+            background: #1f2937;
+            color: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            font-family: 'Monaco', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            opacity: 0.9;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .highlight-title {
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .checklist li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checklist li:before {
+            content: '✓';
+            background: #10b981;
+            color: white;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1>🎨 Phase 2: Pages & Components</h1>
+            <p class="subtitle">Production-ready React components with modern design patterns</p>
+        </div>
+        
+        <!-- Header Component -->
+        <div class="component-section">
+            <h2 class="section-title">📱 Header Component</h2>
+            <div class="mockup">
+                <div class="mockup-text">
+                    <strong>Sticky Navigation</strong> with glassmorphism effect<br>
+                    Cart badge • Search bar • Mobile menu • Responsive design
+                </div>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">Sticky Position</div>
+                    <div class="feature-desc">Header stays visible while scrolling with blur backdrop effect</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-title">Smart Search</div>
+                    <div class="feature-desc">Integrated search bar for desktop and mobile views</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <div class="feature-title">Cart Badge</div>
+                    <div class="feature-desc">Animated counter showing total items in cart</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">Mobile Menu</div>
+                    <div class="feature-desc">Slide-in drawer with smooth animations</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Component -->
+        <div class="component-section">
+            <h2 class="section-title">🦶 Footer Component</h2>
+            <div class="mockup">
+                <div class="mockup-text">
+                    <strong>Multi-column Layout</strong> with newsletter subscription<br>
+                    Quick links • Social media • Contact info • Payment methods
+                </div>
+            </div>
+            <div class="highlight">
+                <div class="highlight-title">📧 Newsletter Integration</div>
+                Email validation • Toast notifications • Loading states • Success feedback
+            </div>
+        </div>
+        
+        <!-- Home Page -->
+        <div class="component-section">
+            <h2 class="section-title">🏠 Home Page</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Sections</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Feature Cards</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-label">Animations</div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <h3 style="margin-bottom: 1rem; color: #374151;">Page Sections:</h3>
+                <ul class="checklist">
+                    <li>Hero Section with gradient background and CTA buttons</li>
+                    <li>Features Grid with icon-based cards</li>
+                    <li>Categories Showcase with product counts</li>
+                    <li>Featured Products using ProductCard component</li>
+                    <li>CTA Section with gradient card design</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- ProductCard Component -->
+        <div class="component-section">
+            <h2 class="section-title">🛍️ ProductCard Component</h2>
+            <div class="mockup">
+                <div class="mockup-text">
+                    <strong>Interactive Product Display</strong><br>
+                    Image zoom • Quick actions • Rating display • Add to cart
+                </div>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <div class="feature-title">Image Effects</div>
+                    <div class="feature-desc">Zoom on hover with smooth transitions</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <div class="feature-title">Quick Actions</div>
+                    <div class="feature-desc">Wishlist toggle and quick view overlay</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <div class="feature-title">Rating System</div>
+                    <div class="feature-desc">Star rating with review count display</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <div class="feature-title">Smart Badges</div>
+                    <div class="feature-desc">Discount percentage and category tags</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Implementation -->
+        <div class="component-section">
+            <h2 class="section-title">🚀 Quick Implementation</h2>
+            <p style="margin-bottom: 1rem; color: #6b7280;">Simply copy the files and import components:</p>
+            
+            <div class="code-snippet">
+<span style="color: #c678dd;">import</span> { Header, Footer } <span style="color: #c678dd;">from</span> <span style="color: #98c379;">'@/components/common'</span>;<br>
+<span style="color: #c678dd;">import</span> { Home } <span style="color: #c678dd;">from</span> <span style="color: #98c379;">'@/pages'</span>;<br>
+<span style="color: #c678dd;">import</span> { ProductCard } <span style="color: #c678dd;">from</span> <span style="color: #98c379;">'@/components/product'</span>;<br><br>
+
+<span style="color: #61afef;">function</span> <span style="color: #e06c75;">App</span>() {<br>
+  <span style="color: #c678dd;">return</span> (<br>
+    <span style="color: #abb2bf;">&lt;&gt;</span><br>
+      &lt;<span style="color: #e06c75;">Header</span> /&gt;<br>
+      &lt;<span style="color: #e06c75;">Home</span> /&gt;<br>
+      &lt;<span style="color: #e06c75;">Footer</span> /&gt;<br>
+    <span style="color: #abb2bf;">&lt;/&gt;</span><br>
+  );<br>
+}
+            </div>
+            
+            <div class="highlight" style="margin-top: 1.5rem;">
+                <div class="highlight-title">💡 Pro Tip</div>
+                All components use the design system from Phase 1. Make sure to have that installed first!
+            </div>
+        </div>
+        
+        <!-- What's Included -->
+        <div class="component-section">
+            <h2 class="section-title">📦 What's Included</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                <div style="padding: 1rem; background: #f9fafb; border-radius: 0.5rem; border: 2px solid #e5e7eb;">
+                    <strong style="color: #2563eb;">✨ Modern Design</strong><br>
+                    <span style="color: #6b7280; font-size: 0.875rem;">Glassmorphism, gradients, smooth animations</span>
+                </div>
+                <div style="padding: 1rem; background: #f9fafb; border-radius: 0.5rem; border: 2px solid #e5e7eb;">
+                    <strong style="color: #2563eb;">📱 Fully Responsive</strong><br>
+                    <span style="color: #6b7280; font-size: 0.875rem;">Mobile, tablet, desktop optimized</span>
+                </div>
+                <div style="padding: 1rem; background: #f9fafb; border-radius: 0.5rem; border: 2px solid #e5e7eb;">
+                    <strong style="color: #2563eb;">♿ Accessible</strong><br>
+                    <span style="color: #6b7280; font-size: 0.875rem;">WCAG compliant, keyboard navigation</span>
+                </div>
+                <div style="padding: 1rem; background: #f9fafb; border-radius: 0.5rem; border: 2px solid #e5e7eb;">
+                    <strong style="color: #2563eb;">⚡ Performant</strong><br>
+                    <span style="color: #6b7280; font-size: 0.875rem;">Optimized animations, lazy loading</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+/* Card Base */
+.card {
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+/* Card Variants */
+.card-default {
+  box-shadow: var(--shadow-sm);
+}
+
+.card-bordered {
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+.card-elevated {
+  box-shadow: var(--shadow-md);
+}
+
+/* Card Hover */
+.card-hover:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card-clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-clickable:active {
+  transform: translateY(-2px);
+}
+
+/* Card Padding */
+.card-padding-none {
+  padding: 0;
+}
+
+.card-padding-sm {
+  padding: var(--space-4);
+}
+
+.card-padding-md {
+  padding: var(--space-6);
+}
+
+.card-padding-lg {
+  padding: var(--space-8);
+}
+
+/* Card Sections */
+.card-header {
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.card-body {
+  padding: var(--space-6);
+}
+
+.card-footer {
+  padding: var(--space-6);
+  border-top: 1px solid var(--color-divider);
+  background-color: var(--color-surface);
+}
+
+/* When card has no padding, adjust sections */
+.card-padding-none .card-header,
+.card-padding-none .card-body,
+.card-padding-none .card-footer {
+  padding: var(--space-6);
+}
+
+/* Card Title */
+.card-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+/* Card Subtitle */
+.card-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+  line-height: var(--line-height-normal);
+}
+
+/* Card Description */
+.card-description {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+
+/* Card Image */
+.card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.card-image-container {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-gray-100);
+}
+
+.card-image-container img {
+  transition: transform var(--transition-slow);
+}
+
+.card-hover:hover .card-image-container img {
+  transform: scale(1.05);
+}
+
+/* Card Badge (for overlays) */
+.card-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 10;
+}
+
+/* Card Actions */
+.card-actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.card-actions.card-actions-start {
+  justify-content: flex-start;
+}
+
+.card-actions.card-actions-center {
+  justify-content: center;
+}
+
+.card-actions.card-actions-between {
+  justify-content: space-between;
+}
+
+/* Card Grid (utility for card layouts) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-6);
+}
+
+@media (min-width: 640px) {
+  .card-grid {
+    gap: var(--space-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid {
+    gap: var(--space-8);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .card-padding-md,
+  .card-header,
+  .card-body,
+  .card-footer {
+    padding: var(--space-4);
+  }
+
+  .card-padding-lg {
+    padding: var(--space-6);
+  }
+}

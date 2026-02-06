@@ -1,0 +1,8 @@
+# Add these dependencies to your package.json:
+
+npm install lucide-react framer-motion react-hot-toast
+
+# These provide:
+# - lucide-react: Modern, beautiful icons
+# - framer-motion: Smooth animations
+# - react-hot-toast: Toast notifications
