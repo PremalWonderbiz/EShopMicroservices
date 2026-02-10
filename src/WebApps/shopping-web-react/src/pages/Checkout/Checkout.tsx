@@ -91,7 +91,12 @@ export const Checkout: React.FC = () => {
   const tax = subtotal * 0.1;
   const total = subtotal + shipping + tax;
 
-  const handleNextStep = async () => {
+  const handleNextStep = async (e?: React.MouseEvent<HTMLButtonElement>) => {
+    // Prevent form submission
+    if (e) {
+      e.preventDefault();
+    }
+
     let fieldsToValidate: (keyof CheckoutFormData)[] = [];
 
     if (currentStep === 1) {
@@ -120,12 +125,18 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  const handlePreviousStep = () => {
+  const handlePreviousStep = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setCurrentStep(currentStep - 1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const onSubmit = async (data: CheckoutFormData) => {
+    // Only submit if we're on step 3 (Review)
+    if (currentStep !== 3) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {

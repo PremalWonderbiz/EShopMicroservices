@@ -30,6 +30,7 @@ var app = builder.Build();
 
 // Configure the Http request pipeline
 app.UseRateLimiter();
+
 app.UseCors("AllowAll");
 
 app.MapReverseProxy();
